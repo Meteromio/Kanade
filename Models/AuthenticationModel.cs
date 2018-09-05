@@ -1,11 +1,6 @@
-﻿using Newtonsoft.Json;
-using NLog;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TootNet;
 
@@ -23,7 +18,7 @@ namespace TootDon.Models
             set => SetProperty(ref _authCode, value);
         }
 
-        // インスタンスネーム
+        // インスタンス名
         public string _instanceName;
         public String InstanceName
         {
@@ -52,7 +47,7 @@ namespace TootDon.Models
         {
             authorize = new Authorize();
             string authorizeUrl = "";
-            await authorize.CreateApp(_instanceName, "Kanade for Mastodon", Scope.Read | Scope.Write, "");
+            await authorize.CreateApp(_instanceName, "MidnightRave", Scope.Read | Scope.Write, "");
             authorizeUrl = authorize.GetAuthorizeUri();
 
             return authorizeUrl;

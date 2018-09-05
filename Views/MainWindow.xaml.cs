@@ -9,22 +9,25 @@ namespace TootDon.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel viewModel = new MainWindowViewModel();
         public MainWindow()
         {
             this.SizeToContent = SizeToContent.Width;
 
             InitializeComponent();
 
-            var viewModel = new MainWindowViewModel();
+            
             DataContext = viewModel;
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
             var instWindow = new SetInstanceWindow();
             instWindow.ShowDialog();
-
-
+            this.Visibility = Visibility.Visible;
+            
+            viewModel.AuthButonIsEnabled = false;
 
         }
 

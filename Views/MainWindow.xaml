@@ -4,15 +4,53 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="MidniteRave" Height="433" Width="599" UseLayoutRounding="False">
-    <Grid Margin="0,0,2,6">
-        <Button Content="Toot" Margin="0,335,10,0" HorizontalAlignment="Right" Width="55" Height="25" VerticalAlignment="Top" RenderTransformOrigin="0.564,-0.32" Command="{Binding TootButtonClicked}"/>
-        <TextBox Margin="11,0,71,35" TextWrapping="Wrap" Text="{Binding TootText, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="0.5,0.5" Height="20" VerticalAlignment="Bottom"/>
-
-        <Label Content="Label" HorizontalAlignment="Left" Height="14" Margin="10,271,0,0" VerticalAlignment="Top" Width="60"/>
-        <Button Content="認証/再認証" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click"/>
-        <ListBox HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="569"/>
-        <StatusBar HorizontalAlignment="Left" Margin="0,383,0,-10" Width="589"/>
-
-
-    </Grid>
+    <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Button Content="認証" 
+                    HorizontalAlignment="Left" 
+                    Height="25" 
+                    Margin="5" 
+                    VerticalAlignment="Center" 
+                    Width="86" 
+                    Click="AuthButton_Click"
+                    IsEnabled="{Binding AuthButonIsEnabled}"/>
+        </Grid>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <ListBox HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="569"/>
+        </Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="524*"/>
+                <ColumnDefinition Width="67*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <TextBox Margin="2" 
+                     TextWrapping="Wrap" 
+                     Text="{Binding TootText, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                     Height="20" 
+                     VerticalAlignment="Bottom"/>
+            <Label Content="Label" 
+                   HorizontalAlignment="Left" 
+                   Height="14" 
+                   Margin="10,271,0,-240" 
+                   VerticalAlignment="Top" 
+                   Width="60"/>
+            <Button Content="Toot" 
+                    Margin="2" 
+                    HorizontalAlignment="Right" 
+                    Width="55" 
+                    Height="25" 
+                    VerticalAlignment="Top" 
+                    RenderTransformOrigin="0.564,-0.32" 
+                    Command="{Binding TootButtonClicked}" Grid.Column="1"/>
+        </Grid>
+    </StackPanel>
 </Window>
