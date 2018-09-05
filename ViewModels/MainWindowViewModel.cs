@@ -1,8 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using TootDon.Models;
 using TootNet;
 
@@ -22,7 +20,6 @@ namespace TootDon.ViewModels
                 {
                     try
                     {
-
                        var TootResult =  await Tokens.Statuses.PostAsync(status => _tootText, visibity => "private");
                        
                     }
@@ -33,10 +30,18 @@ namespace TootDon.ViewModels
                     }
                     finally
                     {
-                        
+                        TootText = "";
                     }
 
                 });
+        }
+
+        // 認証成功したの？
+        private bool _authButonIsEnabled = true;
+        public bool AuthButonIsEnabled
+        {
+            get => _authButonIsEnabled;
+            set => SetProperty(ref _authButonIsEnabled, value);
         }
 
 

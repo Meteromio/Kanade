@@ -3,16 +3,9 @@ using Prism.Events;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TootDon.Models;
-using TootDon.Views;
 
 namespace TootDon.ViewModels
 {
@@ -61,16 +54,12 @@ namespace TootDon.ViewModels
                         {
 
                             var verify = await Model.Tokens.Accounts.VerifyCredentialsAsync();
-                            
-                            AuthResult = "認証できました！";
-                           
                             Messenger.GetEvent<PubSubEvent>().Publish();
 
                         }
                         else
                         {
                             logger.Error("Error : Tokens取得失敗");
-                            AuthResult = "認証に失敗しました！";
                         }
 
                     }
@@ -82,13 +71,7 @@ namespace TootDon.ViewModels
                 });
         }
 
-        // 認証成功したの？
-        private string _authResult;
-        public string AuthResult
-        {
-            get => _authResult;
-            set => SetProperty(ref _authResult, value);
-        }
+
         
         // 認証コード
         public string code
